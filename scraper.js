@@ -12,6 +12,17 @@ async function scrapeJobTitles(url) {
     the title using the xPath*/ 
     const el = await page.$x('//*[@class="gtmJobTitleClickResponsive"]');
 
+    //async function to return all title properties in an array
+    const titles = async (el) => {
+        return Promise.all(el.map((item) => item.getProperty('title')))
+    }
+
+    //async function to return all the string values of the titles
+    const titlesTxt = async (titles) => {
+        return Promise.all(titles.map((title) => title.jsonValue()))
+    }
+
+    
 }
 
 
