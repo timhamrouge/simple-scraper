@@ -22,7 +22,17 @@ async function scrapeJobTitles(url) {
         return Promise.all(titles.map((title) => title.jsonValue()))
     }
 
-    
+    // await the above async calls, finally logging the array of job titles
+    await titles(el)
+    .then(titlesArr => {
+        return titlesTxt(titlesArr);
+    })
+    .then(data => {
+        console.log('This is an Array of Job Titles', data)
+    })
+
+    //finally, close the browser
+    browser.close();
 }
 
 
